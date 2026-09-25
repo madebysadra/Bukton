@@ -10,7 +10,6 @@ import {
 } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import { ASSET_IMAGES } from '../data/mockData';
-import { FIREBASE_PROJECT_ID } from '../utils/firebase';
 
 interface AuthModalProps {
   onClose: () => void;
