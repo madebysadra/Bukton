@@ -66,7 +66,6 @@ export const AuthModal: React.FC<AuthModalProps> = ({
     console.error('[BUKTON Firebase Auth Error]:', {
       code,
       message,
-      project: FIREBASE_PROJECT_ID,
       errorObj: err,
     });
 
