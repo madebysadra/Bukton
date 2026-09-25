@@ -1,0 +1,6 @@
+{
+  "name": "BUKTON - پلتفرم رزرو خدمات",
+  "description": "پلتفرم معتبر کشف، بررسی و رزرو آنلاین نوبت متخصصان برتر خدمات زیبایی، سلامت، فیتنس و استایل.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

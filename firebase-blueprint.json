@@ -1,0 +1,66 @@
+{
+  "entities": {
+    "User": {
+      "title": "User",
+      "description": "Registered user profile",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "description": "Unique user ID" },
+        "email": { "type": "string", "format": "email", "description": "User email" },
+        "name": { "type": "string", "description": "Full name or display name" },
+        "phone": { "type": "string", "description": "Contact telephone number" },
+        "createdAt": { "type": "string", "description": "ISO timestamp of creation" }
+      },
+      "required": ["id", "email", "name"]
+    },
+    "Booking": {
+      "title": "Booking",
+      "description": "A confirmed or pending specialist reservation",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "description": "Booking document ID" },
+        "userId": { "type": "string", "description": "Firebase Auth UID of customer" },
+        "specialistId": { "type": "string", "description": "ID of booked specialist" },
+        "specialistName": { "type": "string", "description": "Specialist name" },
+        "serviceName": { "type": "string", "description": "Reserved service title" },
+        "date": { "type": "string", "description": "Date of appointment in Persian or standard format" },
+        "time": { "type": "string", "description": "Selected time slot" },
+        "price": { "type": "number", "description": "Price in Tomans" },
+        "bookingStatus": { "type": "string", "enum": ["confirmed", "completed", "cancelled"], "description": "Current status" },
+        "createdAt": { "type": "string", "description": "ISO timestamp or Persian date" },
+        "clientName": { "type": "string", "description": "Client full name" },
+        "clientPhone": { "type": "string", "description": "Client contact phone" },
+        "notes": { "type": "string", "description": "Optional booking notes" },
+        "bookingCode": { "type": "string", "description": "Reference confirmation code" }
+      },
+      "required": ["userId", "specialistId", "specialistName", "serviceName", "date", "time", "price", "bookingStatus", "createdAt"]
+    },
+    "Specialist": {
+      "title": "Specialist",
+      "description": "Service specialist profile and offerings",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "description": "Specialist unique ID" },
+        "name": { "type": "string", "description": "Specialist name" },
+        "specialty": { "type": "string", "description": "Specialist subtitle" },
+        "category": { "type": "string", "description": "Service category" },
+        "startingPriceToman": { "type": "number", "description": "Base price" }
+      },
+      "required": ["id", "name", "specialty", "category", "startingPriceToman"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "User",
+      "description": "User profiles keyed by auth UID"
+    },
+    "/bookings/{bookingId}": {
+      "schema": "Booking",
+      "description": "Appointments created by users"
+    },
+    "/specialists/{specialistId}": {
+      "schema": "Specialist",
+      "description": "Specialists catalog"
+    }
+  }
+}
